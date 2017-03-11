@@ -33,11 +33,7 @@ public class Obstacle implements GameObject {
 
     public boolean playerCollide(RectPlayer player) {
         Rect playerRect = player.getRectangle();
-        /* TODO: change to support both rects */
-        return (mRectangle.contains(playerRect.left, playerRect.top)
-                || mRectangle.contains(playerRect.right, playerRect.top)
-                || mRectangle.contains(playerRect.left, playerRect.bottom)
-                || mRectangle.contains(playerRect.right, playerRect.bottom));
+        return Rect.intersects(mRectangle, playerRect) || Rect.intersects(mRectangle2, playerRect);
     }
 
     @Override
