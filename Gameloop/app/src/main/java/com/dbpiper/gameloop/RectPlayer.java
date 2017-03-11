@@ -13,6 +13,11 @@ public class RectPlayer implements GameObject {
     private Rect mRectangle;
     private int mColor;
 
+    public Rect getRectangle() {
+        return mRectangle;
+    }
+
+
     public RectPlayer(Rect rectangle, int color) {
         mRectangle = rectangle;
         mColor = color;

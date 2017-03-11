@@ -19,6 +19,7 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread mThread;
     private RectPlayer mPlayer;
     private Point mPlayerPoint;
+    private ObstacleManager mObstacleManager;
 
     public GamePanel(Context context) {
         super(context);
@@ -26,6 +27,7 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         mThread = new MainThread(getHolder(), this);
         mPlayer = new RectPlayer(new Rect(100, 100, 400, 400), Color.rgb(255, 0, 0));
         mPlayerPoint = new Point(250, 250);
+        mObstacleManager = new ObstacleManager(400, 500, 100, Color.BLACK);
         setFocusable(true);
     }
 
@@ -67,6 +69,7 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     public void update() {
         mPlayer.update(mPlayerPoint);
+        mObstacleManager.update();
     }
 
     @Override
@@ -74,5 +77,6 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         canvas.drawColor(Color.WHITE);
         mPlayer.draw(canvas);
+    mObstacleManager.draw(canvas);
     }
 }
